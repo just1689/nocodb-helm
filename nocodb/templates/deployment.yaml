@@ -43,6 +43,9 @@ spec:
             httpGet:
               path: /
               port: http
+          volumeMounts:
+            - mountPath: /usr/app/data/
+              name: data
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -57,3 +60,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "nocodb-helm.fullname" . }}
