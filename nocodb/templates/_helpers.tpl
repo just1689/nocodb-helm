@@ -60,3 +60,13 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the list of environment variables for nocodb
+*/}}
+{{- define "nocodb-helm.env"}}
+{{- range $key, $val := .Values.env }}
+- name: {{ $key }}
+  value: "{{ $val }}"
+{{- end}}
+{{- end }}

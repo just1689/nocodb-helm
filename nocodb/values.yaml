@@ -10,6 +10,11 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+# Add env vars to configure the application
+# See: https://docs.nocodb.com/getting-started/installation/#environment-variables
+env: {}
+# NC_INVITE_ONLY_SIGNUP: true
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
